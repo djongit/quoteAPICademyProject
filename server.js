@@ -12,18 +12,27 @@ app.get('/api/quotes/random', (req, res, next) => {
     // console.log(req.params);
     const randomQuote = (getRandomElement(quotes));
     if(randomQuote) {
-        res.send({q: randomQuote});
+        res.send({quote: randomQuote});
     } else {
         res.status(404).send('No random quotes found');
     }
 })
 
 app.get('/api/quotes', (req, res, next) => {
-
-// console.log({quotes: quotes});
+    console.log(req);
+console.log(req.query.person);
+// console.log(res);
+if(req.query.person !== undefined) {
+ const personQuotes = quotes.filter(quote => quote.person.toLowerCase() === req.query.person.toLowerCase());
+ res.send({ quotes: personQuotes})
+  } else {
     res.send({quotes: quotes});
+  }
+    
 
 });
+
+
 
 app.listen(PORT, ()=>{
     console.log(`All yours at port ${PORT}`)

@@ -17,7 +17,7 @@ const renderError = response => {
 }
 
 const renderQuotes = (quotes = []) => {
-  console.log('Script quotes' + quotes);
+  // console.log('Script quotes' + quotes);
   resetQuotes();
   if (quotes.length > 0) {
     
@@ -43,13 +43,13 @@ fetchAllButton.addEventListener('click', () => {
     }
   })
   .then(response => {
-    console.log(response.quotes);
+    // console.log(response.quotes);
     renderQuotes(response.quotes);
   });
 });
 
 fetchRandomButton.addEventListener('click', () => {
-  fetch('/api/quotes/random')
+  fetch('api/quotes/random')
   .then(response => {
     if (response.ok) {
       return response.json();
@@ -58,7 +58,7 @@ fetchRandomButton.addEventListener('click', () => {
     }
   })
   .then(response => {
-    renderQuotes([response.q]);
+    renderQuotes([response.quote]);
   });
 });
 
