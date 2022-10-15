@@ -17,8 +17,10 @@ const renderError = response => {
 }
 
 const renderQuotes = (quotes = []) => {
+  console.log('Script quotes' + quotes);
   resetQuotes();
   if (quotes.length > 0) {
+    
     quotes.forEach(quote => {
       const newQuote = document.createElement('div');
       newQuote.className = 'single-quote';
@@ -41,6 +43,7 @@ fetchAllButton.addEventListener('click', () => {
     }
   })
   .then(response => {
+    console.log(response.quotes);
     renderQuotes(response.quotes);
   });
 });
@@ -55,7 +58,7 @@ fetchRandomButton.addEventListener('click', () => {
     }
   })
   .then(response => {
-    renderQuotes([response.quote]);
+    renderQuotes([response.q]);
   });
 });
 

@@ -12,11 +12,18 @@ app.get('/api/quotes/random', (req, res, next) => {
     // console.log(req.params);
     const randomQuote = (getRandomElement(quotes));
     if(randomQuote) {
-        res.send({quote: randomQuote});
+        res.send({q: randomQuote});
     } else {
-        res.status(404).send('nea found');
+        res.status(404).send('No random quotes found');
     }
 })
+
+app.get('/api/quotes', (req, res, next) => {
+
+// console.log({quotes: quotes});
+    res.send({quotes: quotes});
+
+});
 
 app.listen(PORT, ()=>{
     console.log(`All yours at port ${PORT}`)
