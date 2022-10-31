@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 4001;
 app.use(express.static('public'));
 
 app.get('/api/quotes/random', (req, res, next) => {
+    // console.log(req.params);
     const randomQuote = (getRandomElement(quotes));
     if(randomQuote) {
         res.send({quote: randomQuote});
